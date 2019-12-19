@@ -34,4 +34,5 @@ ext {
     compileSdkVersion = 28
 
     lifecycleVersion = '2.1.0'
+    dagger2Version = '2.21'
 }
