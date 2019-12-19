@@ -9,7 +9,7 @@ import com.pavlekuzevski.weatherapp.ui.base.BaseActivity;
 
 import androidx.lifecycle.ViewModelProviders;
 
-public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportViewModel> {
+public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportViewModel> implements ReportNavigator {
 
     ReportViewModel reportViewModel;
     @Override
