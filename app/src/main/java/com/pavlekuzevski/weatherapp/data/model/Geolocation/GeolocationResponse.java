@@ -8,7 +8,6 @@ import android.location.Location;
 import java.util.List;
 
 public class GeolocationResponse {
-
     @Expose
     @SerializedName("results")
     List<GeolocationResult> results;

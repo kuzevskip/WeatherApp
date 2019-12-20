@@ -68,4 +68,7 @@ dependencies {
 
     // card view
     implementation "androidx.cardview:cardview:$rootProject.cardViewVersion"
+
+    // swipe refresh layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$rootProject.swipeRefreshLayoutVersion"
 }

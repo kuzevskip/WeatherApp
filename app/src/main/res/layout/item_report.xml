@@ -8,10 +8,6 @@
         <variable
             name="viewModel"
             type="com.pavlekuzevski.weatherapp.ui.report.ReportItemViewModel" />
-
-        <variable
-            name="reportViewModel"
-            type="com.pavlekuzevski.weatherapp.ui.report.ReportViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

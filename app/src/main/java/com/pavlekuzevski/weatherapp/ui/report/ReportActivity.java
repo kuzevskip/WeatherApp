@@ -39,7 +39,9 @@ public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportVi
         viewModel.setLocation(location);
         viewModel.setAddress(address);
         viewModel.getWeatherReport();
+        binding = getViewDataBinding();
         setupRecyclerView();
+        setupRefreshLayout();
     }
 
     @Override
@@ -59,9 +61,16 @@ public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportVi
     }
 
     private void setupRecyclerView(){
-        binding = getViewDataBinding();
+
         binding.reportRecyclerView.setLayoutManager(layoutManager);
         binding.reportRecyclerView.setItemAnimator(new DefaultItemAnimator());
         binding.reportRecyclerView.setAdapter(adapter);
+    }
+
+    private void setupRefreshLayout(){
+        binding.refreshReportLayout.setOnRefreshListener(() ->{
+            binding.refreshReportLayout.setRefreshing(false);
+            viewModel.getWeatherReport();
+        });
     }
 }
