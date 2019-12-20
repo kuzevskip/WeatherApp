@@ -3,6 +3,7 @@ package com.pavlekuzevski.weatherapp.di.component;
 import android.app.Application;
 
 import com.pavlekuzevski.weatherapp.WeatherApplication;
+import com.pavlekuzevski.weatherapp.di.builder.ActivityBuilder;
 import com.pavlekuzevski.weatherapp.di.module.ApplicationModule;
 
 import javax.inject.Singleton;
@@ -12,7 +13,7 @@ import dagger.Component;
 import dagger.android.AndroidInjectionModule;
 
 @Singleton
-@Component(modules = {AndroidInjectionModule.class, ApplicationModule.class})
+@Component(modules = {AndroidInjectionModule.class, ApplicationModule.class, ActivityBuilder.class})
 public interface ApplicationComponent {
 
     void inject(WeatherApplication application);

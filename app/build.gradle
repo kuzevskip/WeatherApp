@@ -14,6 +14,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "DARK_SKY_URL", "\"https://api.darksky.net/\"")
+            buildConfigField("String", "GEOCODING_URL", "\"https://maps.googleapis.com/maps/api/geocode/\"")
+        }
+        debug {
+            buildConfigField("String", "DARK_SKY_URL", "\"https://api.darksky.net/\"")
+            buildConfigField("String", "GEOCODING_URL", "\"https://maps.googleapis.com/maps/api/geocode/\"")
         }
     }
 
@@ -34,6 +40,10 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
     // view model
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     annotationProcessor "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycleVersion"
@@ -46,4 +56,10 @@ dependencies {
 
     // constraint layout
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+
+    //Retrofit 2
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
 }

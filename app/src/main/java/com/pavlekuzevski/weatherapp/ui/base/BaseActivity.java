@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import dagger.android.AndroidInjection;
 
 public abstract class BaseActivity <T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public abstract class BaseActivity <T extends ViewDataBinding, V extends BaseVie
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        performDependencyInjection();
         super.onCreate(savedInstanceState);
         performDataBindings();
     }
@@ -39,6 +41,10 @@ public abstract class BaseActivity <T extends ViewDataBinding, V extends BaseVie
      * @return view model instance
      */
     public abstract V getViewModel();
+
+    private void performDependencyInjection() {
+        AndroidInjection.inject(this);
+    }
 
     private void performDataBindings() {
         viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId());

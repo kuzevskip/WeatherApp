@@ -4,14 +4,21 @@ import android.os.Bundle;
 
 import com.pavlekuzevski.weatherapp.BR;
 import com.pavlekuzevski.weatherapp.R;
+import com.pavlekuzevski.weatherapp.ViewModelProviderFactory;
 import com.pavlekuzevski.weatherapp.databinding.ActivityReportBinding;
 import com.pavlekuzevski.weatherapp.ui.base.BaseActivity;
+
+import javax.inject.Inject;
 
 import androidx.lifecycle.ViewModelProviders;
 
 public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportViewModel> implements ReportNavigator {
 
     ReportViewModel reportViewModel;
+
+    @Inject
+    ViewModelProviderFactory factory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +36,7 @@ public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportVi
 
     @Override
     public ReportViewModel getViewModel() {
-        reportViewModel = ViewModelProviders.of(this).get(ReportViewModel.class);
+        reportViewModel = ViewModelProviders.of(this, factory).get(ReportViewModel.class);
         return reportViewModel;
     }
 }

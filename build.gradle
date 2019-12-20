@@ -37,4 +37,7 @@ ext {
 
     lifecycleVersion = '2.1.0'
     dagger2Version = '2.21'
+    retrofitVersion = '2.6.2'
+    rxjava2Version = '2.1.9'
+    rxandroidVersion = '2.1.0'
 }
