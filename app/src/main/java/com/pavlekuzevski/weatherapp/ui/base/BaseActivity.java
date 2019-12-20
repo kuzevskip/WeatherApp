@@ -42,6 +42,10 @@ public abstract class BaseActivity <T extends ViewDataBinding, V extends BaseVie
      */
     public abstract V getViewModel();
 
+    public T getViewDataBinding() {
+        return viewDataBinding;
+    }
+
     private void performDependencyInjection() {
         AndroidInjection.inject(this);
     }

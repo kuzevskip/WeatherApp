@@ -8,6 +8,7 @@ import com.pavlekuzevski.weatherapp.BuildConfig;
 import com.pavlekuzevski.weatherapp.data.remote.DarkSkyRetrofitService;
 import com.pavlekuzevski.weatherapp.data.remote.ApplicationDataService;
 import com.pavlekuzevski.weatherapp.data.remote.DataService;
+import com.pavlekuzevski.weatherapp.data.remote.GeocodingRetrofitService;
 import com.pavlekuzevski.weatherapp.utils.rx.ApplicationSchedulerProvider;
 import com.pavlekuzevski.weatherapp.utils.rx.SchedulerProvider;
 
@@ -55,6 +56,12 @@ public class ApplicationModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+    }
+
+    @Singleton
+    @Provides
+    static GeocodingRetrofitService provideGeocodingRetrofitService(@Named(GEOCODING) Retrofit retrofit) {
+        return retrofit.create(GeocodingRetrofitService.class);
     }
 
     @Provides

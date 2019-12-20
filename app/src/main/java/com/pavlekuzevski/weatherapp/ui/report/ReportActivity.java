@@ -1,5 +1,6 @@
 package com.pavlekuzevski.weatherapp.ui.report;
 
+import android.location.Location;
 import android.os.Bundle;
 
 import com.pavlekuzevski.weatherapp.BR;
@@ -14,7 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportViewModel> implements ReportNavigator {
 
-    ReportViewModel reportViewModel;
+    ReportViewModel viewModel;
 
     @Inject
     ViewModelProviderFactory factory;
@@ -22,6 +23,9 @@ public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Location location = getIntent().getParcelableExtra("location");
+        viewModel.setLocation(location);
+        viewModel.getWeatherReport();
     }
 
     @Override
@@ -36,7 +40,7 @@ public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportVi
 
     @Override
     public ReportViewModel getViewModel() {
-        reportViewModel = ViewModelProviders.of(this, factory).get(ReportViewModel.class);
-        return reportViewModel;
+        viewModel = ViewModelProviders.of(this, factory).get(ReportViewModel.class);
+        return viewModel;
     }
 }

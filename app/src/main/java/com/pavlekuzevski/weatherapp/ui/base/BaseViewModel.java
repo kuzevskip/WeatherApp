@@ -33,7 +33,7 @@ public class BaseViewModel<N> extends ViewModel {
         return compositeDisposable;
     }
 
-    public DataService getDataRepository() {
+    public DataService getDataService() {
         return dataService;
     }
 

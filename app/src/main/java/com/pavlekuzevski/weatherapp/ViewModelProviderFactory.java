@@ -1,6 +1,7 @@
 package com.pavlekuzevski.weatherapp;
 
 import com.pavlekuzevski.weatherapp.data.remote.DataService;
+import com.pavlekuzevski.weatherapp.ui.main.MainViewModel;
 import com.pavlekuzevski.weatherapp.ui.report.ReportViewModel;
 import com.pavlekuzevski.weatherapp.utils.rx.SchedulerProvider;
 
@@ -25,6 +26,10 @@ public class ViewModelProviderFactory extends ViewModelProvider.NewInstanceFacto
 
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
+        if (modelClass.isAssignableFrom(MainViewModel.class)) {
+            //noinspection unchecked
+            return (T) new MainViewModel(dataService, schedulerProvider);
+        }
         if (modelClass.isAssignableFrom(ReportViewModel.class)) {
             //noinspection unchecked
             return (T) new ReportViewModel(dataService, schedulerProvider);

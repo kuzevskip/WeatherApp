@@ -6,22 +6,30 @@ import com.pavlekuzevski.weatherapp.data.remote.DataService;
 import com.pavlekuzevski.weatherapp.ui.base.BaseViewModel;
 import com.pavlekuzevski.weatherapp.utils.rx.SchedulerProvider;
 
+import androidx.lifecycle.MutableLiveData;
+
 public class ReportViewModel extends BaseViewModel<ReportNavigator> {
 
-    public ReportViewModel(DataService dataService, SchedulerProvider schedulerProvider){
+    private MutableLiveData<Location> location;
+
+    public ReportViewModel(DataService dataService, SchedulerProvider schedulerProvider) {
         super(dataService, schedulerProvider);
+        location = new MutableLiveData<>();
+    }
+
+    public void getWeatherReport() {
         setIsLoading(true);
-        Location location = new Location("");
-        location.setLatitude(37.8267);
-        location.setLongitude(-122.4233);
-        getCompositeDisposable().add(dataService.getDailyForecast(location).
-                subscribeOn(schedulerProvider.io()).
-                observeOn(schedulerProvider.ui()).
+        getCompositeDisposable().add(getDataService().getDailyForecast(location.getValue()).
+                subscribeOn(getSchedulerProvider().io()).
+                observeOn(getSchedulerProvider().ui()).
                 subscribe(forecast -> {
                     setIsLoading(false);
                 }, throwable -> {
                     setIsLoading(false);
                 }));
+    }
 
+    public void setLocation(Location location) {
+        this.location.setValue(location);
     }
 }

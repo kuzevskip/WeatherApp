@@ -15,11 +15,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "DARK_SKY_URL", "\"https://api.darksky.net/\"")
-            buildConfigField("String", "GEOCODING_URL", "\"https://maps.googleapis.com/maps/api/geocode/\"")
+            buildConfigField("String", "GEOCODING_URL", "\"https://maps.googleapis.com/\"")
         }
         debug {
             buildConfigField("String", "DARK_SKY_URL", "\"https://api.darksky.net/\"")
-            buildConfigField("String", "GEOCODING_URL", "\"https://maps.googleapis.com/maps/api/geocode/\"")
+            buildConfigField("String", "GEOCODING_URL", "\"https://maps.googleapis.com/\"")
         }
     }
 
