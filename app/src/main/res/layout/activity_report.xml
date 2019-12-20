@@ -17,6 +17,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reportRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:adapter_items="@{viewModel.forecastItems}"
+            tools:listitem="@layout/item_report" />
+
         <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/address_looking_up"
             style="?android:attr/progressBarStyleLarge"

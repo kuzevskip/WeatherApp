@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.pavlekuzevski.weatherapp.ui.report.ReportItemViewModel" />
+
+        <variable
+            name="reportViewModel"
+            type="com.pavlekuzevski.weatherapp.ui.report.ReportViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/conditionImageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:adjustViewBounds="true"
+                android:layout_centerVertical="true"
+                android:importantForAccessibility="no"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_launcher_foreground" />
+
+            <TextView
+                android:id="@+id/summaryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/conditionImageView"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{viewModel.summary}"
+                tools:text="Rain" />
+
+            <TextView
+                android:id="@+id/highestTemperatureLabel"
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@id/conditionImageView"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/summaryTextView"
+                android:text="Highest temperature : "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@id/highestTemperatureLabel"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/summaryTextView"
+                android:text="@{viewModel.highestTemperature}"
+                tools:text="50°F"/>
+
+            <TextView
+                android:id="@+id/lowestTemperatureLabel"
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@id/conditionImageView"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/highestTemperatureLabel"
+                android:text="Lowest temperature : "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@id/lowestTemperatureLabel"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/highestTemperatureLabel"
+                android:text="@{viewModel.lowestTemperature}"
+                tools:text="50°F"/>
+
+            <TextView
+                android:id="@+id/precipitationLabel"
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@id/conditionImageView"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/humidityLabel"
+                android:text="Chance of precipitation : " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@id/precipitationLabel"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/humidityLabel"
+                android:text="@{viewModel.precipitation}"
+                tools:text="50%"/>
+
+            <TextView
+                android:id="@+id/humidityLabel"
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@id/conditionImageView"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/dateTextView"
+                android:text="Humidity : "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_toEndOf="@id/humidityLabel"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/dateTextView"
+                android:text="@{viewModel.humidity}"
+                tools:text="97%"/>
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/conditionImageView"
+                android:textSize="12sp"
+                android:textStyle="italic"
+                android:text="@{viewModel.date}"
+                tools:text="19/12/2019" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

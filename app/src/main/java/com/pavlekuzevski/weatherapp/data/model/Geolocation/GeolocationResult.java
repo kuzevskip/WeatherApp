@@ -4,6 +4,11 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class GeolocationResult {
+
+    @Expose
+    @SerializedName("formatted_address")
+    String address;
+
     @Expose
     @SerializedName("geometry")
     Geometry geometry;
@@ -11,4 +16,9 @@ public class GeolocationResult {
     public Geometry getGeometry() {
         return geometry;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
 }

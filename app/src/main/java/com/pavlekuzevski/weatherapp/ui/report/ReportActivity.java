@@ -12,20 +12,34 @@ import com.pavlekuzevski.weatherapp.ui.base.BaseActivity;
 import javax.inject.Inject;
 
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
 public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportViewModel> implements ReportNavigator {
 
     ReportViewModel viewModel;
 
+    ActivityReportBinding binding;
+
     @Inject
     ViewModelProviderFactory factory;
+
+    @Inject
+    LayoutManager layoutManager;
+
+    @Inject
+    RecyclerView.Adapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Location location = getIntent().getParcelableExtra("location");
+        String address = getIntent().getStringExtra("address");
         viewModel.setLocation(location);
+        viewModel.setAddress(address);
         viewModel.getWeatherReport();
+        setupRecyclerView();
     }
 
     @Override
@@ -42,5 +56,12 @@ public class ReportActivity extends BaseActivity<ActivityReportBinding, ReportVi
     public ReportViewModel getViewModel() {
         viewModel = ViewModelProviders.of(this, factory).get(ReportViewModel.class);
         return viewModel;
+    }
+
+    private void setupRecyclerView(){
+        binding = getViewDataBinding();
+        binding.reportRecyclerView.setLayoutManager(layoutManager);
+        binding.reportRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        binding.reportRecyclerView.setAdapter(adapter);
     }
 }

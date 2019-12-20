@@ -21,10 +21,6 @@ public class BaseViewModel<N> extends ViewModel {
         compositeDisposable = new CompositeDisposable();
     }
 
-    public BaseViewModel(){
-
-    }
-
     private WeakReference<N> navigator;
 
     private final ObservableBoolean isLoading = new ObservableBoolean();

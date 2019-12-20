@@ -68,9 +68,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     }
 
     @Override
-    public void showWeatherReport(Location location) {
+    public void showWeatherReport(Location location, String address) {
         Intent intent = new Intent(MainActivity.this, ReportActivity.class);
         intent.putExtra("location", location);
+        intent.putExtra("address", address);
         startActivity(intent);
     }
 

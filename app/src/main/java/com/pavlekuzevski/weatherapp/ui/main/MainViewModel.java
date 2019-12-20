@@ -21,7 +21,7 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(geolocationResponse -> {
                     setIsLoading(false);
-                    getNavigator().showWeatherReport(geolocationResponse.getLocation());
+                    getNavigator().showWeatherReport(geolocationResponse.getLocation(), geolocationResponse.getAddress());
                 }, throwable -> {
                     setIsLoading(false);
                     getNavigator().showError(throwable.getMessage());

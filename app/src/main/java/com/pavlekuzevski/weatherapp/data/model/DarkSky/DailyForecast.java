@@ -17,4 +17,8 @@ public class DailyForecast {
     @Expose
     @SerializedName("data")
     List<ForecastData> data;
+
+    public List<ForecastData> getData() {
+        return data;
+    }
 }

@@ -8,6 +8,7 @@ import android.location.Location;
 import java.util.List;
 
 public class GeolocationResponse {
+
     @Expose
     @SerializedName("results")
     List<GeolocationResult> results;
@@ -19,5 +20,9 @@ public class GeolocationResponse {
             location.setLatitude(results.get(0).getGeometry().getLocation().getLatitude());
         }
         return location;
+    }
+
+    public String getAddress(){
+        return results != null && !results.isEmpty() ? results.get(0).getAddress() : "";
     }
 }

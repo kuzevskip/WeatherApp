@@ -19,4 +19,8 @@ public class Forecast {
     @Expose
     @SerializedName("daily")
     DailyForecast dailyForecast;
+
+    public DailyForecast getDailyForecast() {
+        return dailyForecast;
+    }
 }
